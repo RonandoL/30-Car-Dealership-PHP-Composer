@@ -1,29 +1,41 @@
 <?php
-    class Cars
+    class Car
     {
-        private $make_model;
+        private $make;
+        private $model;
         private $price;
         private $miles;
         private $color;
         private $image;
 
-        function __construct($car_make_model, $car_price, $car_miles, $car_color, $car_image)
+        function __construct($car_make, $car_model, $car_price, $car_miles, $car_color, $car_image)
         {
-            $this->make_model = $car_make_model;
+            $this->make = $car_make;
+            $this->model = $car_model;
             $this->price = $car_price;
             $this->miles = $car_miles;
             $this->color = $car_color;
             $this->image = $car_image;
         }
 
-        // Setter getter Make-Model
-        function setMakeModel($new_make_model)
+        // Setter getter Make
+        function setMake($new_make)
         {
-            $this->make_model = $new_make_model;
+            $this->make = $new_make;
         }
-        function getMakeModel()
+        function getMake()
         {
-            return $this->make_model;
+            return $this->make;
+        }
+
+        // Setter getter Model
+        function setModel($model)
+        {
+            $this->model = $model;
+        }
+        function getModel()
+        {
+            return $this->model;
         }
 
         // Setter getter Price
