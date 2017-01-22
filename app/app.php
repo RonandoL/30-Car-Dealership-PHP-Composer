@@ -23,7 +23,11 @@
               <form action='dealership'>
                 <div class='form-group'>
                   <label for='price'>Enter how much money chew gots for a car bro</label>
-                  <input type='number' name='price' id='price'>
+                  <input type='number' name='price' id='price'class='form-control' >
+                </div>
+                <div class='form-group'>
+                  <label for='color'>What color do you want?</label>
+                  <input type='text' name='color' id='color' class='form-control' placeholder='White, Blue, Black or Red'>
                 </div>
 
                 <button type='submit' class='btn btn-sm btn-danger'>Find my car!</button>
@@ -45,7 +49,25 @@
         $camaro1 = new Car("Chevy", "Camaro", 49500, 3, "Black", "http://www.latestcarmodel.com/wp-content/uploads/2016/02/chevrolet-camaro-black-concept-3-wide-250x200.jpg");
         $camaro2 = new Car("Chevy", "Camaro", 55000, 0, "White", "http://carphotos.cardomain.com/ride_images/3/3440/541/33597770009_medium.jpg");
 
-        $all_cars = array($accord1, $f1501, $f1502, $accord2, $mustang1, $corolla1, $camaro1, $camaro2);
+        $all_cars = [$accord1, $f1501, $f1502, $accord2, $mustang1, $corolla1, $camaro1, $camaro2];
+        $price_point = $_GET["price"];
+
+        // Filter based on User's Price Point
+        $price_matched_cars = [];
+        foreach ($all_cars as $car) {
+          if ($car->getPrice() <= $price_point ) {
+            array_push($price_matched_cars, $car);
+          }
+        }
+
+        // Filter based on User's Price Point
+        $color_choice = $_GET['color'];
+        $color_matched_cars = [];
+        foreach ($price_matched_cars as $priced_car) {
+          if ($priced_car->getColor() == $color_choice) {
+            array_push($color_matched_cars, $priced_car);
+          }
+        }
 
         echo "<!DOCTYPE html>
         <html>
@@ -61,7 +83,7 @@
               <h1>Suzie's Car Pavillion</h1>
             </div>";
 
-        foreach ($all_cars as $car) {
+        foreach ($color_matched_cars as $car) {
             echo "<div class='row'>
                     <div class='col-md-3'>
                       <img src='" . $car->getImage() . "'>
