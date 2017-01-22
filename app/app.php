@@ -50,9 +50,12 @@
         $camaro2 = new Car("Chevy", "Camaro", 55000, 0, "White", "http://carphotos.cardomain.com/ride_images/3/3440/541/33597770009_medium.jpg");
 
         $all_cars = [$accord1, $f1501, $f1502, $accord2, $mustang1, $corolla1, $camaro1, $camaro2];
-        $price_point = $_GET["price"];
 
         // Filter based on User's Price Point
+        $price_point = $_GET["price"];
+            if ($price_point == 0) {
+              $price_point = 55555;
+            }
         $price_matched_cars = [];
         foreach ($all_cars as $car) {
           if ($car->getPrice() <= $price_point ) {
@@ -61,7 +64,10 @@
         }
 
         // Filter based on User's Price Point
-        $color_choice = $_GET['color'];
+        $color_choice = ucfirst($_GET['color']);
+            if ($color_choice != "Red" && $color_choice != "White" && $color_choice != "Blue" && $color_choice != "Black") {
+              $color_choice = "Black";
+            }
         $color_matched_cars = [];
         foreach ($price_matched_cars as $priced_car) {
           if ($priced_car->getColor() == $color_choice) {
@@ -81,6 +87,9 @@
             <div class='container'>
               <div class='jumbotron'>
               <h1>Suzie's Car Pavillion</h1>
+              <h4>Your filters are:</h4>
+              <p>Price Point: $" . $price_point . "</p>
+              <p>Color Preference: " . $color_choice . "</p>
             </div>";
 
         foreach ($color_matched_cars as $car) {
