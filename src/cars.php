@@ -1,5 +1,5 @@
 <?php
-    class Car
+    class Cars
     {
         private $make_model;
         private $price;
@@ -7,35 +7,26 @@
         private $color;
         private $image;
 
-        function __construct($car_make, $car_price, $car_miles, $car_color, $car_image)
+        function __construct($car_make_model, $car_price, $car_miles, $car_color, $car_image)
         {
-            $this->make_model = $car_make;
+            $this->make_model = $car_make_model;
             $this->price = $car_price;
             $this->miles = $car_miles;
             $this->color = $car_color;
             $this->image = $car_image;
         }
 
-          // Takes user price point input, and grabs all cars less than user's price point!
-          // Look at this as an implicit IF conditional statement
-          // $this->price < ($max_price_inputted) is the same as if ($match_car->getPrice() <= $price_point)
-          // BUT, turns out I don't need the method. The getter works perfectly fine
-        // function worthBuying($max_price_inputted)
-        // {
-        //     return $this->price < ($max_price_inputted);
-        // }
-
-        // SETTER GETTER MAKE MODEL
-        function setMake($new_make)
+        // Setter getter Make-Model
+        function setMakeModel($new_make_model)
         {
-            $this->make_model = $new_make;
+            $this->make_model = $new_make_model;
         }
-        function getMake()
+        function getMakeModel()
         {
             return $this->make_model;
         }
 
-        // SETTER GETTER PRICE
+        // Setter getter Price
         function setPrice($new_price)
         {
             $this->price = $new_price;
@@ -45,7 +36,7 @@
             return $this->price;
         }
 
-        // SETTER GETTER MILES
+        // Setter getter Miles
         function setMiles($new_miles)
         {
             $this->miles = $new_miles;
@@ -55,7 +46,7 @@
             return $this->miles;
         }
 
-        // SETTER GETTER COLOR
+        // Setter getter Miles
         function setColor($new_color)
         {
             $this->color = $new_color;
@@ -65,7 +56,7 @@
             return $this->color;
         }
 
-        // SETTER GETTER IMAGE
+        // Setter getter Image
         function setImage($new_image)
         {
             $this->image = $new_image;
